@@ -33,7 +33,7 @@ For Software:
 
 ## Installation
 
-```git clone https://github.com/your-repo/thalathirinja-web.git```
+```git clone https://github.com/your-repo/thalathirinja-web.git``` 
 ```cd thalathirinja-web```
 ```npm install```
 
