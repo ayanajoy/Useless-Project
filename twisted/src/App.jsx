@@ -7,9 +7,9 @@ import FormPage from "./components/FormPage.jsx"; // <-- Your form page componen
 function App() {
   return (
     <>
-      <ReversedCursor />
+      
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<ReversedCursor ><Home /> </ReversedCursor >} />
         <Route path="/form" element={<FormPage />} />
       </Routes>
     </>
