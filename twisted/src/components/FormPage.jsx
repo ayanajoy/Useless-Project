@@ -12,11 +12,16 @@ const FormPage = () => {
 
   // State for Question 3 animation
   const [colorWords, setColorWords] = useState([
-    { text: "RED", color: "blue" },
-    { text: "BLUE", color: "red" },
-    { text: "GREEN", color: "yellow" },
-    { text: "YELLOW", color: "green" },
+    { text: "DER", color: "blue" },
+    { text: "EULB", color: "red" },
+    { text: "NEERG", color: "yellow" },
+    { text: "WOLLEY", color: "green" },
   ]);
+
+  const mirrorStyle = {
+  transform: 'scaleX(-1)', // This mirrors/flips the text horizontally
+  display: 'inline-block' // Required for transform to work on inline elements
+};
 
   // State for the moving submit button
   const [showSubmit, setShowSubmit] = useState(false);
@@ -25,7 +30,7 @@ const FormPage = () => {
   const MAX_ATTEMPTS = 7;
 
   // Correct answers definition
-  const CORRECT_ANSWERS = ["YES", "Venus", "RED"];
+  const CORRECT_ANSWERS = ["SEY", "SUNEV", "DER"];
 
   // --- Effects ---
 
@@ -106,38 +111,25 @@ const FormPage = () => {
     return (
       <div className="completion-container">
         <div className="completion-card">
-          <h1 className="troll-title">😂 CONGRATULATIONS!</h1>
-          <h2 className="troll-subtitle">You just wasted your precious time!</h2>
-          <div className="troll-message">
-            <p>🎉 YOU'VE BEEN TROLLED! 🎉</p>
-            <p>Did you really think this "form" served any purpose?</p>
-            <p>You spent all that effort clicking buttons that:</p>
-            <ul className="troll-list">
-              <li>✨ Swapped labels to confuse you</li>
-              <li>✨ Made you find planets based on pixel proximity</li>
-              <li>✨ Showed colors that didn't match their words</li>
-            </ul>
+          <h1 className="troll-title" >😂 CONGRATULATIONS!</h1>
+          <h2 className="troll-subtitle" >You just wasted your precious time!</h2>
+          <div className="troll-message" >
+
             <p className="troll-punchline">
               <strong>AND FOR WHAT?</strong>
               <br />
               Just to see this message telling you it was all pointless! 😈
             </p>
-            <div className="time-wasted">
-              <p>⏰ <em>Time you'll never get back: Successfully wasted!</em> ⏰</p>
+            <div className="time-wasted" style={mirrorStyle}>
+              <p style={mirrorStyle}>⏰ <em>Time you'll never get back: Successfully wasted!</em> ⏰</p>
             </div>
+            <p className="troll-footer" ><em>Thank you for being such a good sport! 😄</em></p>
           </div>
-          <div className="responses-section">
-            <h3>Your "Valuable" Responses:</h3>
-            <ul className="responses-list">
-              <li>Question 1: {answers[0] || "No response"} (Who cares?)</li>
-              <li>Question 2: {answers[1] || "No response"} (Completely useless!)</li>
-              <li>Question 3: {answers[2] || "No response"} (Absolutely meaningless!)</li>
-            </ul>
-          </div>
-          <button onClick={resetForm} className="troll-button">
+          
+          <button onClick={resetForm} className="troll-button" >
             🤡 Want to waste MORE time?
           </button>
-          <p className="troll-footer"><em>Thank you for being such a good sport! 😄</em></p>
+          
         </div>
       </div>
     );
@@ -146,44 +138,44 @@ const FormPage = () => {
   return (
     <div className="form-container">
       <div className="form-header-main">
-        <h1 className="form-title-main">Welcome to the Madness Form</h1>
-        <p className="form-subtitle-main">Complete all questions below - Where logic goes to die</p>
+        <h1 className="form-title-main" style={mirrorStyle}>Welcome to the Madness Form</h1>
+        <p className="form-subtitle-main" style={mirrorStyle}>Complete all questions below - Where logic goes to die</p>
         <div className="progress-bar">
           <div
             className="progress-fill"
             style={{ width: `${(answers.filter(a => a !== null).length / 3) * 100}%` }}
           ></div>
         </div>
-        <p className="progress-text">
+        <p className="progress-text" style={mirrorStyle}>
           {answers.filter(a => a !== null).length} of 3 questions answered
         </p>
       </div>
 
-      <div className="questions-container">
+      <div className="questions-container" >
         {/* Question 1 Card */}
         <div className={`question-card ${isQuestionAnswered(0) && !wrongAnswers[0] ? "completed" : ""}`}>
-          <div className="question-number">Question 1</div>
-          <h2 className="question-title">Click the button that says YES!</h2>
+          <div className="question-number" style={mirrorStyle}>Question 1</div><br />
+          <h2 className="question-title" style={mirrorStyle}>Click the button that says YES!</h2>
           <div
             className="button-group"
             style={{ position: "relative", zIndex: 1 }} // added to ensure buttons are clickable
           >
             <button
-              onClick={() => handleAnswer(0, labelsSwapped ? "NO" : "YES")}
+              onClick={() => handleAnswer(0, labelsSwapped ? "ON" : "SEY")}
               className="yes-button"
               style={{ position: "relative", zIndex: 10, pointerEvents: "auto" }}
             >
-              {labelsSwapped ? "NO" : "YES"}
+              {labelsSwapped ? "ON" : "SEY"}
             </button>
             <button
-              onClick={() => handleAnswer(0, labelsSwapped ? "YES" : "NO")}
+              onClick={() => handleAnswer(0, labelsSwapped ? "SEY" : "ON")}
               className="no-button"
               style={{ position: "relative", zIndex: 10, pointerEvents: "auto" }}
             >
-              {labelsSwapped ? "YES" : "NO"}
+              {labelsSwapped ? "SEY" : "ON"}
             </button>
           </div>
-          <p className="question-hint">Labels swap every second. Watch carefully!</p>
+          <p className="question-hint" style={mirrorStyle}>Labels swap every second. Watch carefully!</p>
           {isQuestionAnswered(0) && (
             <div className={`answer-display ${wrongAnswers[0] ? "wrong" : "correct"}`}>
               {wrongAnswers[0] ? "✗ Wrong Answer!" : `✓ Your answer: ${answers[0]}`}
@@ -193,14 +185,14 @@ const FormPage = () => {
 
         {/* Question 2 Card */}
         <div className={`question-card ${isQuestionAnswered(1) && !wrongAnswers[1] ? "completed" : ""}`}>
-          <div className="question-number">Question 2</div>
-          <h2 className="question-title">
+          <div className="question-number" style={mirrorStyle}>Question 2</div>
+          <h2 className="question-title" style={mirrorStyle}>
             Which planet is closest to the <span className="sun-highlight">Sun</span>?
           </h2>
-          <div className="planet-grid">
-            {["Mercury", "Venus", "Mars", "Jupiter"].map((planet, index) => (
+          <div className="planet-grid" >
+            {["SUNEV", "YRUCREM", "SRAM", "RETIPUJ"].map((planet, index) => (
               <button
-                key={planet}
+                key={planet} 
                 onClick={() => handleAnswer(1, planet)}
                 className={`planet-button planet-${index}`}
               >
@@ -208,9 +200,7 @@ const FormPage = () => {
               </button>
             ))}
           </div>
-          <p className="question-hint">
-            Choose the planet button that is physically closest to the word "Sun" above!
-          </p>
+          
           {isQuestionAnswered(1) && (
             <div className={`answer-display ${wrongAnswers[1] ? "wrong" : "correct"}`}>
               {wrongAnswers[1] ? "✗ Wrong Answer!" : `✓ Your answer: ${answers[1]}`}
@@ -220,9 +210,9 @@ const FormPage = () => {
 
         {/* Question 3 Card */}
         <div className={`question-card ${isQuestionAnswered(2) && !wrongAnswers[2] ? "completed" : ""}`}>
-          <div className="question-number">Question 3</div>
-          <h2 className="question-title">Click the word RED</h2>
-          <div className="color-grid">
+          <div className="question-number" style={mirrorStyle}>Question 3</div>
+          <h2 className="question-title" style={mirrorStyle}>Click the word RED</h2>
+          <div className="color-grid" >
             {colorWords.map((word, index) => (
               <button
                 key={`${word.text}-${index}`}
@@ -246,8 +236,8 @@ const FormPage = () => {
       {/* Moving Submit Section */}
       {showSubmit && (
         <div className="submit-section-troll" style={{ position: "relative", height: "150px" }}>
-          <p className="submit-message">
-            🎉 You got them all right! Now... can you click the button?
+          <p className="submit-message" style={mirrorStyle}>
+            🎉 You got them all right! Now... can you click on the Submit button?
           </p>
           <div className="moving-button-container" style={{ position: "relative", height: "100px" }}>
             <button
@@ -262,7 +252,7 @@ const FormPage = () => {
               onClick={handleSubmit}
               title={submitAttempts >= MAX_ATTEMPTS ? "Fine, you win." : "Catch me if you can!"}
             >
-              Submit
+              timbuS
             </button>
           </div>
         </div>
