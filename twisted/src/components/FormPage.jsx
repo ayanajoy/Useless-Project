@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./FormPage.css";
 
 const FormPage = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState([null, null, null]);
   const [formCompleted, setFormCompleted] = useState(false);
   
   // Question 1 states
@@ -22,78 +21,48 @@ const FormPage = () => {
 
   // Question 1 Effects - Label swapping
   useEffect(() => {
-    if (currentQuestion === 0) {
-      const swapInterval = setInterval(() => {
-        setLabelsSwapped(prev => !prev);
-      }, 1000);
+    const swapInterval = setInterval(() => {
+      setLabelsSwapped(prev => !prev);
+    }, 1000);
 
-      return () => clearInterval(swapInterval);
-    }
-  }, [currentQuestion]);
+    return () => clearInterval(swapInterval);
+  }, []);
 
   // Question 3 Effects - Shuffling color words
   useEffect(() => {
-    if (currentQuestion === 2) {
-      const shuffleInterval = setInterval(() => {
-        setColorWords(prev => {
-          const shuffled = [...prev];
-          for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-          }
-          return shuffled;
-        });
-      }, 1000);
+    const shuffleInterval = setInterval(() => {
+      setColorWords(prev => {
+        const shuffled = [...prev];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+      });
+    }, 1000);
 
-      return () => clearInterval(shuffleInterval);
-    }
-  }, [currentQuestion]);
+    return () => clearInterval(shuffleInterval);
+  }, []);
 
-  const nextQuestion = (answer) => {
-    // For Question 1, only advance if clicked YES
-    if (currentQuestion === 0) {
-      if (answer === "YES") {
-        setAnswers(prev => [...prev, answer]);
-        setCurrentQuestion(1);
-        setLabelsSwapped(false);
-      }
-      // If wrong answer, don't advance - let them try again
-      return;
-    }
+  const handleAnswer = (questionIndex, answer) => {
+    const newAnswers = [...answers];
+    newAnswers[questionIndex] = answer;
+    setAnswers(newAnswers);
     
-    // For Question 2 and 3, advance normally
-    setAnswers(prev => [...prev, answer]);
-    
-    if (currentQuestion === 1) {
-      // Move from Question 2 to Question 3
-      setCurrentQuestion(2);
-    } else if (currentQuestion === 2) {
-      // Move from Question 3 to completion
-      setFormCompleted(true);
+    // Check if all questions are answered
+    if (newAnswers.every(answer => answer !== null)) {
+      setTimeout(() => setFormCompleted(true), 500);
     }
   };
 
   const resetForm = () => {
-    setCurrentQuestion(0);
-    setAnswers([]);
+    setAnswers([null, null, null]);
     setFormCompleted(false);
     setLabelsSwapped(false);
   };
 
-  // Calculate distance between elements for Question 2
-  const getDistanceToSun = (buttonElement) => {
-    if (!sunRef.current || !buttonElement) return Infinity;
-    
-    const sunRect = sunRef.current.getBoundingClientRect();
-    const buttonRect = buttonElement.getBoundingClientRect();
-    
-    const sunX = sunRect.left + sunRect.width / 2;
-    const sunY = sunRect.top + sunRect.height / 2;
-    const buttonX = buttonRect.left + buttonRect.width / 2;
-    const buttonY = buttonRect.top + buttonRect.height / 2;
-    
-    return Math.sqrt(Math.pow(sunX - buttonX, 2) + Math.pow(sunY - buttonY, 2));
-  };
+  const isQuestionAnswered = (index) => answers[index] !== null;
+  const allQuestionsAnswered = answers.every(answer => answer !== null);
 
   if (formCompleted) {
     return (
@@ -143,83 +112,122 @@ const FormPage = () => {
 
   return (
     <div className="form-container">
-      <div className="form-card">
-        <div className="form-header">
-          <h1 className="form-title">
-            Welcome to the Madness Form
-          </h1>
-          <p className="form-subtitle">
-            Question {currentQuestion + 1} of 3 - Where logic goes to die
+      <div className="form-header-main">
+        <h1 className="form-title-main">
+          Welcome to the Madness Form
+        </h1>
+        <p className="form-subtitle-main">
+          Complete all questions below - Where logic goes to die
+        </p>
+        <div className="progress-bar">
+          <div 
+            className="progress-fill" 
+            style={{ width: `${(answers.filter(a => a !== null).length / 3) * 100}%` }}
+          ></div>
+        </div>
+        <p className="progress-text">
+          {answers.filter(a => a !== null).length} of 3 questions answered
+        </p>
+      </div>
+
+      <div className="questions-container">
+        {/* Question 1 Card */}
+        <div className={`question-card ${isQuestionAnswered(0) ? 'completed' : ''}`}>
+          <div className="question-number">Question 1</div>
+          <h2 className="question-title">
+            Click the button that says YES!
+          </h2>
+          <div className="button-group">
+            <button
+              onClick={() => handleAnswer(0, labelsSwapped ? "NO" : "YES")}
+              className="yes-button"
+              disabled={isQuestionAnswered(0)}
+            >
+              {labelsSwapped ? "NO" : "YES"}
+            </button>
+            <button
+              onClick={() => handleAnswer(0, labelsSwapped ? "YES" : "NO")}
+              className="no-button"
+              disabled={isQuestionAnswered(0)}
+            >
+              {labelsSwapped ? "YES" : "NO"}
+            </button>
+          </div>
+          <p className="question-hint">
+            Labels swap every second. Watch carefully!
           </p>
+          {isQuestionAnswered(0) && (
+            <div className="answer-display">
+              ✓ Your answer: <strong>{answers[0]}</strong>
+            </div>
+          )}
         </div>
 
-        {/* Question 1: YES/NO with swapping labels */}
-        {currentQuestion === 0 && (
-          <div className="question-container">
-            <h2 className="question-title">
-              Click the button that says YES!
-            </h2>
-            <div className="button-group">
+        {/* Question 2 Card */}
+        <div className={`question-card ${isQuestionAnswered(1) ? 'completed' : ''}`}>
+          <div className="question-number">Question 2</div>
+          <h2 className="question-title">
+            Which planet is closest to the <span ref={sunRef} className="sun-highlight">Sun</span>?
+          </h2>
+          <div className="planet-grid">
+            {["Mercury", "Venus", "Mars", "Jupiter"].map((planet, index) => (
               <button
-                onClick={() => nextQuestion(labelsSwapped ? "NO" : "YES")}
-                className="yes-button"
+                key={planet}
+                onClick={() => handleAnswer(1, planet)}
+                className={`planet-button planet-${index}`}
+                disabled={isQuestionAnswered(1)}
               >
-                {labelsSwapped ? "NO" : "YES"}
+                {planet}
               </button>
+            ))}
+          </div>
+          <p className="question-hint">
+            Choose the planet button that is physically closest to the word "Sun" above!
+          </p>
+          {isQuestionAnswered(1) && (
+            <div className="answer-display">
+              ✓ Your answer: <strong>{answers[1]}</strong>
+            </div>
+          )}
+        </div>
+
+        {/* Question 3 Card */}
+        <div className={`question-card ${isQuestionAnswered(2) ? 'completed' : ''}`}>
+          <div className="question-number">Question 3</div>
+          <h2 className="question-title">
+            Click the word RED
+          </h2>
+          <div className="color-grid">
+            {colorWords.map((word, index) => (
               <button
-                onClick={() => nextQuestion(labelsSwapped ? "YES" : "NO")}
-                className="no-button"
+                key={`${word.text}-${index}`}
+                onClick={() => handleAnswer(2, word.text)}
+                className="color-button"
+                style={{ color: word.color }}
+                disabled={isQuestionAnswered(2)}
               >
-                {labelsSwapped ? "YES" : "NO"}
+                {word.text}
               </button>
-            </div>
-            
+            ))}
           </div>
-        )}
-
-        {/* Question 2: Planet closest to the word "Sun" */}
-        {currentQuestion === 1 && (
-          <div className="question-container">
-            <h2 className="question-title">
-              Which planet is closest to the <span ref={sunRef} className="sun-highlight">Sun</span>?
-            </h2>
-            <div className="planet-grid">
-              {["Jupiter", "Venus", "Mercury", "Mars"].map((planet, index) => (
-                <button
-                  key={planet}
-                  onClick={() => nextQuestion(planet)}
-                  className={`planet-button planet-${index}`}
-                >
-                  {planet}
-                </button>
-              ))}
+          <p className="question-hint">
+            Colors shuffle every second. Trust the text, not the color!
+          </p>
+          {isQuestionAnswered(2) && (
+            <div className="answer-display">
+              ✓ Your answer: <strong>{answers[2]}</strong>
             </div>
-            
-          </div>
-        )}
-
-        {/* Question 3: Color confusion */}
-        {currentQuestion === 2 && (
-          <div className="question-container">
-            <h2 className="question-title">
-              Click the word RED
-            </h2>
-            <div className="color-grid">
-              {colorWords.map((word, index) => (
-                <button
-                  key={`${word.text}-${index}`}
-                  onClick={() => nextQuestion(word.text)}
-                  className="color-button"
-                  style={{ color: word.color }}
-                >
-                  {word.text}
-                </button>
-              ))}
-            </div>
-            
-          </div>
-        )}
+          )}
+        </div>
       </div>
+
+      {allQuestionsAnswered && (
+        <div className="submit-section">
+          <div className="submit-message">
+            🎉 All questions answered! Processing your responses...
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -8,11 +8,118 @@
 /* Main containers */
 .form-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a161a 0%, #000000 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
   padding: 20px;
+}
+
+.form-header-main {
+  text-align: center;
+  margin-bottom: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-title-main {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-subtitle-main {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.question-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.question-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.question-card.completed {
+  border-color: #27ae60;
+  background: linear-gradient(135deg, #f8fff9, #ffffff);
+}
+
+.question-number {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.question-card.completed .question-number {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+.answer-display {
+  background: #d4edda;
+  color: #155724;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border: 1px solid #c3e6cb;
+  font-weight: bold;
+}
+
+.submit-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.submit-message {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  animation: pulse 1s infinite;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .completion-container {
@@ -77,15 +184,16 @@
 }
 
 .question-title {
-  font-size: 1.8rem;
-  margin-bottom: 30px;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
   color: #333;
 }
 
 .question-hint {
-  margin-top: 20px;
+  margin-top: 15px;
   color: #666;
   font-style: italic;
+  font-size: 0.9rem;
 }
 
 /* Button groups and grids */
@@ -112,101 +220,89 @@
 }
 
 /* Buttons */
+.yes-button, .no-button {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
 .yes-button {
   background: #27ae60;
   color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
 }
 
-.yes-button:hover {
+.yes-button:hover:not(:disabled) {
   background: #229954;
+  transform: translateY(-1px);
+}
+
+.yes-button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
 }
 
 .no-button {
   background: #e74c3c;
   color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
 }
 
-.no-button:hover {
+.no-button:hover:not(:disabled) {
   background: #c0392b;
+  transform: translateY(-1px);
+}
+
+.no-button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
 }
 
 .planet-button {
   color: white;
   border: none;
-  padding: 15px 25px;
+  padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1.1rem;
-  transition: transform 0.2s ease;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
-.planet-button:hover {
-  transform: translateY(-2px);
+.planet-button:hover:not(:disabled) {
+  transform: translateY(-1px);
 }
 
-.planet-0 {
-  background: #3498db;
-}
-
-.planet-0:hover {
-  background: #2980b9;
-}
-
-.planet-1 {
-  background: #9b59b6;
-}
-
-.planet-1:hover {
-  background: #8e44ad;
-}
-
-.planet-2 {
-  background: #e74c3c;
-}
-
-.planet-2:hover {
-  background: #c0392b;
-}
-
-.planet-3 {
-  background: #f39c12;
-}
-
-.planet-3:hover {
-  background: #e67e22;
+.planet-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .color-button {
   background: #f8f9fa;
   border: 3px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
 }
 
-.color-button:hover {
+.color-button:hover:not(:disabled) {
   border-color: #aaa;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.color-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .reset-button {
@@ -302,7 +398,12 @@
   font-size: 0.9rem;
   margin-top: 20px;
 }
-
+.sun-highlight {
+  background: yellow;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
 
 /* Responses section */
 .responses-section {
@@ -320,28 +421,64 @@
   padding: 5px 0;
 }
 
+/* Planet button specific colors */
+.planet-0 {
+  background: #3498db;
+}
+
+.planet-0:hover:not(:disabled) {
+  background: #2980b9;
+}
+
+.planet-1 {
+  background: #9b59b6;
+}
+
+.planet-1:hover:not(:disabled) {
+  background: #8e44ad;
+}
+
+.planet-2 {
+  background: #e74c3c;
+}
+
+.planet-2:hover:not(:disabled) {
+  background: #c0392b;
+}
+
+.planet-3 {
+  background: #f39c12;
+}
+
+.planet-3:hover:not(:disabled) {
+  background: #e67e22;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
-  .form-card, .completion-card {
+  .question-card {
     padding: 20px;
   }
   
-  .form-title, .completion-title {
+  .form-title-main {
     font-size: 2rem;
   }
   
   .question-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .button-group {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
   }
   
   .planet-grid, .color-grid {
     grid-template-columns: 1fr;
     max-width: 300px;
   }
+  
+  .questions-container {
+    gap: 20px;
+  }
 }
-
