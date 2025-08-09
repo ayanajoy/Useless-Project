@@ -46,23 +46,22 @@ npm run dev
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="1915" height="914" alt="image" src="https://github.com/user-attachments/assets/49c29d89-4494-46a9-949b-bb0582693737" />
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+This is the landing page of our Useless Project. It's designed to immediately set the tone: chaotic, nonsensical, and intentionally broken.
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1910" height="965" alt="image" src="https://github.com/user-attachments/assets/f7a73c27-3be5-4e92-afe1-94b8acce15d5" />
 
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+Before you can even step into the chaos, you have to prove you're worthy. Most users will instinctively click the giant, flashy, reversed title. That's when they are met with our first "feature": This friendly pop-up, written in pure Manglish, gently reminds the user that on this website, the obvious path is always the wrong one. Poyi real button kand pidikkoo! (Go find the real button!)
 
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+<img width="1900" height="967" alt="image" src="https://github.com/user-attachments/assets/4aa58147-ce9d-4306-be4e-6ff532c72a0b" />
+
+Once the user finds the real button, they are taken to the heart of our project: a quiz designed by madmen.
+Everything is backward, the questions are designed to trick you, and logic has officially left the chat. After Completing all the questions there will be a submit button that dodges the cursor, moving randomly until the user finally manages to click it.
+
+<img width="1891" height="962" alt="image" src="https://github.com/user-attachments/assets/f8b98748-bcb5-49ce-bbe3-c505cd4f99f6" />
+
+Your grand prize for all that effort? A cheerful message confirming you've successfully wasted your time. You're welcome!
 
 
 ## Team Contributions
