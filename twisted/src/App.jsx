@@ -1,20 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ReversedCursor from "./components/ReversedCursor.jsx";
 import Home from "./components/Home.jsx";
-import FormPage from "./components/FormPage.jsx"; // <-- Your form page component
+import FormPage from "./components/FormPage.jsx";
 
 function App() {
+  const location = useLocation();
+  const shouldShowCursor = location.pathname === "/";
+
   return (
     <>
-      
+      {shouldShowCursor && <ReversedCursor />}
       <Routes>
-        <Route path="/" element={<ReversedCursor ><Home /> </ReversedCursor >} />
+        <Route path="/" element={<Home />} />
         <Route path="/form" element={<FormPage />} />
       </Routes>
     </>
   );
 }
-
 
 export default App;
