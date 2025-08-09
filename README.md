@@ -33,9 +33,11 @@ For Software:
 
 ## Installation
 
-``` bash git clone https://github.com/your-repo/thalathirinja-web.git``` 
-cd thalathirinja-web
-npm install
+- ```bash git clone (https://github.com/ayanajoy/Useless-Project.git)t```
+- cd Useless-Project
+- cd twisted
+- npm install
+
 
 # Run
 npm run dev
