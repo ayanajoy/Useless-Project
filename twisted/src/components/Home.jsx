@@ -46,7 +46,7 @@ const Home = () => {
       </p>
 
       {/* Fake button */}
-      <button onClick={fakeButtonClick}>Enter the Madness</button>
+      <button onClick={fakeButtonClick}>Step Into More Chaos</button>
 
       {/* Popup card */}
       {showPopup && (
