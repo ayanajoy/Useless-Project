@@ -1,6 +1,8 @@
-* {
-  cursor: none !important; /* Hide the real cursor globally */
-}
+/*
+ * Home.css
+ */
+
+/* REMOVED the global rule from here: * { cursor: none !important; } */
 
 body {
   margin: 0;
@@ -11,6 +13,12 @@ body {
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
+}
+
+/* THIS IS THE CORRECTED RULE 👇 */
+/* It only hides the cursor when the body has the .hide-real-cursor class */
+body.hide-real-cursor * {
+  cursor: none !important;
 }
 
 .container {
@@ -34,13 +42,10 @@ body {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-
-  /* Use a cursor image to make it look like the real pointer */
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="black"><path d="M2,2 L10,20 L14,14 L20,18 L2,2 Z" stroke="white" stroke-width="1" fill="black"/></svg>');
   background-size: contain;
   background-repeat: no-repeat;
 }
-
 
 .title {
   font-size: 3rem;
@@ -65,12 +70,11 @@ button {
   border-radius: 10px;
 }
 
-
-
 .mirror {
   transform: scaleX(-1);
   display: inline-block;
 }
+
 /* Popup Overlay */
 .popup-overlay {
   position: fixed;
