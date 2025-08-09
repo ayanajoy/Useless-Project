@@ -4,7 +4,7 @@
 
 
 ### Team Members
-- Team Lead: Ayana Joy - Vidya Academy Of Science And Technology
+- Member 1: Ayana Joy - Vidya Academy Of Science And Technology
 - Member 2: Bhadra M U - Vidya Academy Of Science And Technology
 
 ### Project Description
@@ -57,37 +57,17 @@ For Software:
 ![Workflow](Add your workflow/architecture diagram here)
 *Add caption explaining your workflow*
 
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
 ### Project Demo
 # Video
 [Add your demo video link here]
 *Explain what the video demonstrates*
 
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Ayana Joy: Developed core React components, handled state management, implemented navigation and routing logic, and assisted in debugging and deployment.
+- Bhadra M U: Designed and implemented the reversed cursor and scroll behavior, created chaotic UI effects, and managed overall React project structure.
+
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
