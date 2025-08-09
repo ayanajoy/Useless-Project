@@ -1,0 +1,347 @@
+/* Pulse animation */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Main containers */
+.form-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a161a 0%, #000000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.completion-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Cards */
+.form-card {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.completion-card {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Headers */
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  color: #666;
+}
+
+.completion-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.completion-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Question containers */
+.question-container {
+  text-align: center;
+}
+
+.question-title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.question-hint {
+  margin-top: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Button groups and grids */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.planet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Buttons */
+.yes-button {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.yes-button:hover {
+  background: #229954;
+}
+
+.no-button {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.no-button:hover {
+  background: #c0392b;
+}
+
+.planet-button {
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.planet-button:hover {
+  transform: translateY(-2px);
+}
+
+.planet-0 {
+  background: #3498db;
+}
+
+.planet-0:hover {
+  background: #2980b9;
+}
+
+.planet-1 {
+  background: #9b59b6;
+}
+
+.planet-1:hover {
+  background: #8e44ad;
+}
+
+.planet-2 {
+  background: #e74c3c;
+}
+
+.planet-2:hover {
+  background: #c0392b;
+}
+
+.planet-3 {
+  background: #f39c12;
+}
+
+.planet-3:hover {
+  background: #e67e22;
+}
+
+.color-button {
+  background: #f8f9fa;
+  border: 3px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.color-button:hover {
+  border-color: #aaa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.reset-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+  background: #5a67d8;
+}
+
+/* Troll completion styles */
+.troll-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #e74c3c;
+  animation: pulse 1s infinite;
+}
+
+.troll-subtitle {
+  font-size: 1.8rem;
+  color: #f39c12;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.troll-message {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.troll-message p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.troll-list {
+  text-align: left;
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.troll-list li {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+.troll-punchline {
+  font-size: 1.3rem !important;
+  text-align: center;
+  margin: 20px 0 !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.time-wasted {
+  background: rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 2px dashed white;
+}
+
+.troll-button {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  margin: 20px 0;
+}
+
+.troll-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+.troll-footer {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+
+/* Responses section */
+.responses-section {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.responses-list {
+  list-style: none;
+  padding: 0;
+}
+
+.responses-list li {
+  margin: 5px 0;
+  padding: 5px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-card, .completion-card {
+    padding: 20px;
+  }
+  
+  .form-title, .completion-title {
+    font-size: 2rem;
+  }
+  
+  .question-title {
+    font-size: 1.5rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .planet-grid, .color-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+}
+
