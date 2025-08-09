@@ -139,7 +139,7 @@ const FormPage = () => {
     <div className="form-container">
       <div className="form-header-main">
         <h1 className="form-title-main" style={mirrorStyle}>Welcome to the Madness Form</h1>
-        <p className="form-subtitle-main" style={mirrorStyle}>Complete all questions below - Where logic goes to die</p>
+        <p className="form-subtitle-main" style={mirrorStyle}>Can You Complete all questions below - Where logic goes to die</p>
         <div className="progress-bar">
           <div
             className="progress-fill"
@@ -224,7 +224,6 @@ const FormPage = () => {
               </button>
             ))}
           </div>
-          <p className="question-hint">Colors shuffle every second. Trust the text, not the color!</p>
           {isQuestionAnswered(2) && (
             <div className={`answer-display ${wrongAnswers[2] ? "wrong" : "correct"}`}>
               {wrongAnswers[2] ? "✗ Wrong Answer!" : `✓ Your answer: ${answers[2]}`}

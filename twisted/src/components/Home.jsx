@@ -33,16 +33,16 @@ const Home = () => {
         <span className="spin-hover" onClick={goToForm} style={{ cursor: "pointer" }}>
           🌀
         </span>{" "}
-        <span className="mirror">Thalathirinja Website</span>
+        <span className="mirror">That Thalathirinja Website</span>
       </h1>
 
       <p className="subtitle mirror">
-        Oh, you can read this? You’re already one of us.
+        Oh, you can read this? Welcome, fellow weirdo.
       </p>
       <p className="description mirror">
-        Everything is twisted here... Like literally.<br />
-        Words? Twisted. Logic? Gone.<br />
-        Click things at your own risk – brain not guaranteed.
+        Everything here is backward, upside down, and probably on fire.<br />
+        Words are just suggestions. Logic is on vacation.<br />
+        Click at your own risk—we're not responsible for any brain-related incidents.
       </p>
 
       {/* Fake button */}
