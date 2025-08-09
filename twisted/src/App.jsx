@@ -1,15 +1,20 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import FormPage from "./components/FormPage"; // You can create this
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ReversedCursor from "./components/ReversedCursor.jsx";
+import Home from "./components/Home.jsx";
+import FormPage from "./components/FormPage.jsx"; // <-- Your form page component
 
-const App = () => {
+function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/form" element={<FormPage />} />
-    </Routes>
+    <>
+      <ReversedCursor />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<FormPage />} />
+      </Routes>
+    </>
   );
-};
+}
+
 
 export default App;
