@@ -22,7 +22,7 @@ const FormPage = () => {
   const [showSubmit, setShowSubmit] = useState(false);
   const [submitPosition, setSubmitPosition] = useState({ top: "40%", left: "45%" });
   const [submitAttempts, setSubmitAttempts] = useState(0);
-  const MAX_ATTEMPTS = 5;
+  const MAX_ATTEMPTS = 7;
 
   // Correct answers definition
   const CORRECT_ANSWERS = ["YES", "Venus", "RED"];
