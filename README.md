@@ -29,13 +29,16 @@ For Software:
 
 - Tools: VSCode, GitHub
 
-### Implementation
-For Software:
-# Installation
-[commands]
+# Implementation
+
+## Installation
+
+git clone https://github.com/your-repo/thalathirinja-web.git
+cd thalathirinja-web
+npm install
 
 # Run
-[commands]
+npm run dev
 
 ### Project Documentation
 For Software:
