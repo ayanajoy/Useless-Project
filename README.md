@@ -33,7 +33,7 @@ For Software:
 
 ## Installation
 
-- ```bash git clone (https://github.com/ayanajoy/Useless-Project.git)t```
+- ```git clone (https://github.com/ayanajoy/Useless-Project.git)t```
 - cd Useless-Project
 - cd twisted
 - npm install
@@ -45,7 +45,7 @@ npm run dev
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
+# Screenshots 
 <img width="1915" height="914" alt="image" src="https://github.com/user-attachments/assets/49c29d89-4494-46a9-949b-bb0582693737" />
 
 This is the landing page of our Useless Project. It's designed to immediately set the tone: chaotic, nonsensical, and intentionally broken.
@@ -65,8 +65,8 @@ Your grand prize for all that effort? A cheerful message confirming you've succe
 
 
 ## Team Contributions
-- Ayana Joy: Developed core React components, handled state management, implemented navigation and routing logic, and assisted in debugging and deployment.
-- Bhadra M U: Designed and implemented the reversed cursor and scroll behavior, created chaotic UI effects, and managed overall React project structure.
+- [ Ayana Joy ](https://github.com/ayanajoy): Developed core React components, handled state management, implemented navigation and routing logic, and assisted in debugging and deployment.
+- [ Bhadra M U ](https://github.com/bhadra-unni): Designed and implemented the reversed cursor and scroll behavior, created chaotic UI effects, and managed overall React project structure.
 
 
 
