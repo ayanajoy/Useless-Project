@@ -17,10 +17,23 @@ const ReversedCursor = () => {
       const deltaX = e.clientX - lastMouse.x;
       const deltaY = e.clientY - lastMouse.y;
 
-      setFakeCursor((prev) => ({
-        x: clamp(prev.x - deltaX, 0, window.innerWidth),
-        y: clamp(prev.y - deltaY, 0, window.innerHeight),
-      }));
+      setFakeCursor((prev) => {
+        const newPos = {
+          x: clamp(prev.x - deltaX, 0, window.innerWidth),
+          y: clamp(prev.y - deltaY, 0, window.innerHeight),
+        };
+
+        // 🔹 Hover detection for fake cursor
+        const el = document.elementFromPoint(newPos.x, newPos.y);
+        document
+          .querySelectorAll(".fake-hover")
+          .forEach((btn) => btn.classList.remove("is-hovered"));
+        if (el && el.classList.contains("fake-hover")) {
+          el.classList.add("is-hovered");
+        }
+
+        return newPos;
+      });
 
       setLastMouse({ x: e.clientX, y: e.clientY });
     };

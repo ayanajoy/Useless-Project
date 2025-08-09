@@ -28,16 +28,19 @@ body {
 }
 
 .fake-cursor {
-  width: 25px;
-  height: 25px;
-  border: 3px solid red;
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  background-color: rgba(255, 0, 0, 0.6);
   transform: translate(-50%, -50%);
+
+  /* Use a cursor image to make it look like the real pointer */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="black"><path d="M2,2 L10,20 L14,14 L20,18 L2,2 Z" stroke="white" stroke-width="1" fill="black"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+
 
 .title {
   font-size: 3rem;
@@ -62,12 +65,68 @@ button {
   border-radius: 10px;
 }
 
-button:hover {
-  background-color: #0ff;
-  color: #111;
-}
+
 
 .mirror {
   transform: scaleX(-1);
   display: inline-block;
+}
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Matching Card Theme */
+.popup-card {
+  background: #c3b8b8;
+  color: #3d1e27;
+  padding: 20px 25px;
+  border-radius: 16px;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+  animation: popupAnim 0.3s ease-out;
+}
+
+.popup-card p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.popup-card button {
+  background-color: #280d07;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.popup-card button:hover {
+  background-color: #e76952;
+}
+
+@keyframes popupAnim {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.spin-hover {
+  display: inline-block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  cursor: pointer;
+}
+
+.spin-hover:hover {
+  transform: rotate(360deg) scale(1.3);
+  filter: drop-shadow(0 0 8px rgb(214, 220, 220));
 }
